@@ -3,15 +3,19 @@ const ejs = require("ejs");
 const app = express();
 const port = 3000;
 
+var langSelector = "";
+
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 app.get("/", (req,res) => {
-    res.render("Home-BG");
+    langSelector = "/EU";
+    res.render("Home-BG", {langSelected: langSelector});
 })
 
 app.get("/EU", (req,res) => {
-    res.render("Home-EN")
+    langSelector = "/";
+    res.render("Home-EN", {langSelected : langSelector});
 })
 
 app.listen(port, () => {
